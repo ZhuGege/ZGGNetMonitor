@@ -32,11 +32,19 @@ std::string CZGGLog::GetLogTime()
 //创建日志
 bool CZGGLog::InitLog(string strLogFileName)
 {
-	FILE* pFile = NULL;
+	m_pFile = NULL;
 	//成功返回0
-	if(fopen_s(&pFile,strLogFileName.c_str(),"w+"))
+	if(fopen_s(&m_pFile,strLogFileName.c_str(),"w+"))
 		return false;
 	
+	return true;
+}
+
+bool CZGGLog::WriteInternal(string strLog)
+{
+	fwrite(strLog.c_str(),strLog.length(),1,m_pFile);
+
+	return true;
 }
 
 

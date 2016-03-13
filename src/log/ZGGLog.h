@@ -19,8 +19,10 @@ class CZGGLog
 private:
 	string GetLogTime();
 	bool InitLog(string strLogFileName);
-	bool Write(string strLog);
+	bool WriteInternal(string strLog);
 private:
+	FILE* m_pFile;
+
 	//ÄÚ²¿Ëø
 	class CLock
 	{
