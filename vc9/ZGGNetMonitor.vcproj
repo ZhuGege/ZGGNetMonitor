@@ -182,47 +182,43 @@
 	</References>
 	<Files>
 		<File
-			RelativePath="..\src\ReadMe.txt"
+			RelativePath="..\src\frame\ReadMe.txt"
 			>
 		</File>
 		<File
-			RelativePath="..\src\Resource.h"
+			RelativePath="..\src\frame\Resource.h"
 			>
 		</File>
 		<File
-			RelativePath="..\src\stdafx.cpp"
+			RelativePath="..\src\frame\stdafx.cpp"
 			>
 		</File>
 		<File
-			RelativePath="..\src\stdafx.h"
+			RelativePath="..\src\frame\stdafx.h"
 			>
 		</File>
 		<File
-			RelativePath="..\src\targetver.h"
+			RelativePath="..\src\frame\targetver.h"
 			>
 		</File>
 		<File
-			RelativePath="..\src\ZGGNetMonitor.cpp"
+			RelativePath="..\src\frame\ZGGNetMonitor.cpp"
 			>
 		</File>
 		<File
-			RelativePath="..\src\ZGGNetMonitor.h"
+			RelativePath="..\src\frame\ZGGNetMonitor.h"
 			>
 		</File>
 		<File
-			RelativePath="..\src\ZGGNetMonitor.ncb"
+			RelativePath="..\src\frame\ZGGNetMonitor.rc"
 			>
 		</File>
 		<File
-			RelativePath="..\src\ZGGNetMonitor.rc"
+			RelativePath="..\src\frame\ZGGNetMonitorDlg.cpp"
 			>
 		</File>
 		<File
-			RelativePath="..\src\ZGGNetMonitorDlg.cpp"
-			>
-		</File>
-		<File
-			RelativePath="..\src\ZGGNetMonitorDlg.h"
+			RelativePath="..\src\frame\ZGGNetMonitorDlg.h"
 			>
 		</File>
 	</Files>
