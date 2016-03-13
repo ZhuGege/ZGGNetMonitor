@@ -247,6 +247,18 @@
 				>
 			</File>
 		</Filter>
+		<Filter
+			Name="log"
+			>
+			<File
+				RelativePath="..\src\log\ZGGLog.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\src\log\ZGGLog.h"
+				>
+			</File>
+		</Filter>
 	</Files>
 	<Globals>
 	</Globals>
