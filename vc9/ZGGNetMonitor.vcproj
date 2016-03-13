@@ -45,6 +45,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
+				AdditionalIncludeDirectories="..\src\common;..\src\inject;..\src\frame"
 				PreprocessorDefinitions="WIN32;_WINDOWS;_DEBUG"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -126,6 +127,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
+				AdditionalIncludeDirectories="..\src\common;..\src\inject;..\src\frame"
 				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG"
 				MinimalRebuild="false"
 				RuntimeLibrary="0"
@@ -181,46 +183,70 @@
 	<References>
 	</References>
 	<Files>
-		<File
-			RelativePath="..\src\frame\ReadMe.txt"
+		<Filter
+			Name="frame"
 			>
-		</File>
-		<File
-			RelativePath="..\src\frame\Resource.h"
+			<File
+				RelativePath="..\src\frame\ReadMe.txt"
+				>
+			</File>
+			<File
+				RelativePath="..\src\frame\Resource.h"
+				>
+			</File>
+			<File
+				RelativePath="..\src\frame\stdafx.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\src\frame\stdafx.h"
+				>
+			</File>
+			<File
+				RelativePath="..\src\frame\targetver.h"
+				>
+			</File>
+			<File
+				RelativePath="..\src\frame\ZGGNetMonitor.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\src\frame\ZGGNetMonitor.h"
+				>
+			</File>
+			<File
+				RelativePath="..\src\frame\ZGGNetMonitor.rc"
+				>
+			</File>
+			<File
+				RelativePath="..\src\frame\ZGGNetMonitorDlg.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\src\frame\ZGGNetMonitorDlg.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="inject"
 			>
-		</File>
-		<File
-			RelativePath="..\src\frame\stdafx.cpp"
+			<File
+				RelativePath="..\src\inject\Inject.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\src\inject\Inject.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="common"
 			>
-		</File>
-		<File
-			RelativePath="..\src\frame\stdafx.h"
-			>
-		</File>
-		<File
-			RelativePath="..\src\frame\targetver.h"
-			>
-		</File>
-		<File
-			RelativePath="..\src\frame\ZGGNetMonitor.cpp"
-			>
-		</File>
-		<File
-			RelativePath="..\src\frame\ZGGNetMonitor.h"
-			>
-		</File>
-		<File
-			RelativePath="..\src\frame\ZGGNetMonitor.rc"
-			>
-		</File>
-		<File
-			RelativePath="..\src\frame\ZGGNetMonitorDlg.cpp"
-			>
-		</File>
-		<File
-			RelativePath="..\src\frame\ZGGNetMonitorDlg.h"
-			>
-		</File>
+			<File
+				RelativePath="..\src\common\common.h"
+				>
+			</File>
+		</Filter>
 	</Files>
 	<Globals>
 	</Globals>
