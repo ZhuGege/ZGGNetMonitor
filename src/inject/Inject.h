@@ -18,4 +18,5 @@ class CInject
 private:
 	DWORD GetTargetProcessID(__in TCHAR* ptszProcessName, __out DWORD& dwPID);
 	DWORD InjectDLLByCreateRemoteThread(__in DWORD dwTargetPID, __in TCHAR* ptszDLLName);
+	BOOL  enableDebugPriv();
 };
