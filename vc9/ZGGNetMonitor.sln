@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ZGGNetMonitor", "ZGGNetMonitor.vcproj", "{0B7B9DDB-5C65-4D00-A52C-1B61260DE194}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "unitest", "unitest.vcproj", "{69324994-9E76-47B8-9F01-28D3D406A8A4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -13,6 +15,10 @@ Global
 		{0B7B9DDB-5C65-4D00-A52C-1B61260DE194}.Debug|Win32.Build.0 = Debug|Win32
 		{0B7B9DDB-5C65-4D00-A52C-1B61260DE194}.Release|Win32.ActiveCfg = Release|Win32
 		{0B7B9DDB-5C65-4D00-A52C-1B61260DE194}.Release|Win32.Build.0 = Release|Win32
+		{69324994-9E76-47B8-9F01-28D3D406A8A4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{69324994-9E76-47B8-9F01-28D3D406A8A4}.Debug|Win32.Build.0 = Debug|Win32
+		{69324994-9E76-47B8-9F01-28D3D406A8A4}.Release|Win32.ActiveCfg = Release|Win32
+		{69324994-9E76-47B8-9F01-28D3D406A8A4}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

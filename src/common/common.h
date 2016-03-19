@@ -10,6 +10,15 @@ Date:2016-03-13
 Description:Inject DLL to Target Process
 
 **************************************************************************/
+#include <string>
+
+#define in_tchar
+
+#define in_bytes
+
+
+
+
 enum ZGG_NET_MONITOR_ERROR_CODE
 {
 	ZGG_NET_MONITOR_ERROR_CODE_OPEN_TARGET_PROCESS_FAILED=10000,
