@@ -1,12 +1,12 @@
 #include "gtest/gtest.h"
-#include "ZGGLog.h"
+#include "Log.h"
 #include "LogToFile.h"
 
 #pragma warning(disable:4800)
 
 TEST(GetLogTime,ZGGLog)
 {
-	CZGGLog * pobjLog = new CLogToFile;
+	ZGG::CLog * pobjLog = new ZGG::CLogToFile;
 	TCHAR tszLogTime[44] = {0};
 	EXPECT_TRUE(pobjLog->GetLogTime(tszLogTime,_countof(tszLogTime)));
 	_tprintf(_T("%s\n"),tszLogTime);
@@ -17,5 +17,6 @@ TEST(GetLogTime,ZGGLog)
 	printf("%s\n",strHexMatrix.c_str());
 
 	EXPECT_TRUE(pobjLog->InitLog(_T("test.log")));
-	EXPECT_TRUE(pobjLog->WriteLog(_T("write by zhugege")));
+	EXPECT_TRUE(pobjLog->WriteLog(_T("write by ÷Ï∏Á∏Á")));
+
 }

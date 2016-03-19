@@ -7,26 +7,33 @@ Author: ZhuGege
 
 Date:2016-03-13
 
-Description:Inject DLL to Target Process
+Description:Log To File Implement
 
 **************************************************************************/
 #include <string>
 #include <windows.h>
 using namespace std;
-#include "ZGGLog.h"
+#include "Log.h"
 
-class CLogToFile :public CZGGLog
+namespace ZGG
+{
+
+class CLogToFile :public CLog
 {
 public:
 	typedef basic_string<TCHAR, char_traits<TCHAR>,
 		allocator<TCHAR> > tstring;
 
-	CLogToFile(){};
+	CLogToFile(){	
+		m_pFile = INVALID_HANDLE_VALUE;
+		m_dwMaxOutputBufLen = 0;
+		m_pszOutputBuf = NULL;
+	}
 
-	BOOL InitLog(const TCHAR* strLogFileName = _T("ZggLog.log")/*默认名称*/,
-					DWORD dwMaxOutputBufLen = 1024*1024 /*默认最大1M的缓冲区*/);
+	BOOL InitLog(__in const TCHAR* strLogFileName = _T("ZggLog.log")/*默认名称*/,
+				 __in DWORD dwMaxOutputBufLen = 1024*1024 /*默认最大1M的缓冲区*/);
 
-	BOOL WriteLog(const TCHAR* fmt,...);
+	BOOL WriteLog(__in const TCHAR* fmt,...);
 private:
 
 	HANDLE m_pFile;
@@ -35,4 +42,5 @@ private:
 
 };
 
-#define  LOG_OUTPRINT CLogToFile::GetZggLogInstance()->WriteLog
+
+} //namespace ZGG

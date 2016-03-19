@@ -251,6 +251,14 @@
 			Name="log"
 			>
 			<File
+				RelativePath="..\src\log\Log.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\src\log\Log.h"
+				>
+			</File>
+			<File
 				RelativePath="..\src\log\LogToFile.cpp"
 				>
 			</File>

@@ -6,13 +6,14 @@ Author: ZhuGege
 
 Date:2016-03-13
 
-Description:Inject DLL to Target Process
+Description:Log To File Implement
 
 **************************************************************************/
 
 #include "LogToFile.h"
 #include <time.h>
 #include <tchar.h>
+
 
 //***************************************************************
 // Method:      InitLog
@@ -24,10 +25,9 @@ Description:Inject DLL to Target Process
 // Parameter:   DWORD dwMaxOutputBufLen
 // Description: ³õÊ¼»¯ÈÕÖ¾
 //***************************************************************
-BOOL CLogToFile::InitLog(const TCHAR* strLogFileName /*= _T("ZggLog.log")Ä¬ÈÏÃû³Æ*/, DWORD dwMaxOutputBufLen /*= 1024*1024 Ä¬ÈÏ×î´ó1MµÄ»º³åÇø*/)
+BOOL ZGG::CLogToFile::InitLog(__in const TCHAR* strLogFileName /*= _T("ZggLog.log")Ä¬ÈÏÃû³Æ*/, 
+							  __in DWORD dwMaxOutputBufLen /*= 1024*1024 Ä¬ÈÏ×î´ó1MµÄ»º³åÇø*/)
 {
-
-	m_pFile = INVALID_HANDLE_VALUE;
 	
 	m_pFile = CreateFile(strLogFileName,
 							FILE_WRITE_DATA|FILE_READ_DATA,
@@ -60,8 +60,13 @@ BOOL CLogToFile::InitLog(const TCHAR* strLogFileName /*= _T("ZggLog.log")Ä¬ÈÏÃû³
 // Parameter:   ...
 // Description: Ð´ÈÕÖ¾
 //***************************************************************
-BOOL CLogToFile::WriteLog(const TCHAR* fmt,...)
+BOOL ZGG::CLogToFile::WriteLog(__in const TCHAR* fmt,...)
 {
+	if (m_pFile == INVALID_HANDLE_VALUE || m_pszOutputBuf == NULL)
+	{
+		return FALSE;
+	}
+
 	RtlZeroMemory(m_pszOutputBuf,m_dwMaxOutputBufLen * sizeof(TCHAR));
 	va_list args; 
 	va_start(args, fmt);				
@@ -82,5 +87,3 @@ BOOL CLogToFile::WriteLog(const TCHAR* fmt,...)
 	DWORD dwRet;
 	return WriteFile(m_pFile,strWrite.c_str(),strWrite.length()*sizeof(TCHAR),&dwRet,NULL);
 }
-
-
