@@ -38,48 +38,31 @@ BOOL ZGG::CLogToFile::InitLog()
 	{
 		//移动文件尾部，附加
 		SetFilePointer(m_pFile, 0, NULL, FILE_END); 
-		//申请缓冲空间
-		m_pszOutputBuf = new(std::nothrow) TCHAR[m_dwMaxOutputBufLen];
 	}
 
-	return (m_pFile != INVALID_HANDLE_VALUE) && (m_pszOutputBuf != NULL);
+	return (m_pFile != INVALID_HANDLE_VALUE);
 
 }
 
+
+
 //***************************************************************
 // Method:      WriteLog
-// FullName:    CLogToFile::WriteLog
+// FullName:    ZGG::CLogToFile::WriteLog
 // Access:      public 
 // Returns:     BOOL
 // Qualifier:  
-// Parameter:   const TCHAR * fmt
-// Parameter:   ...
-// Description: 写日志
+// Parameter:   __in const void * ptszOutputBuf
+// Parameter:   __in DWORD dwOutputBufLen
+// Description: 输出
 //***************************************************************
-BOOL ZGG::CLogToFile::WriteLog(__in const TCHAR* fmt,...)
+BOOL ZGG::CLogToFile::WriteLog(__in const void* ptszOutputBuf ,__in DWORD dwOutputBufLen /*in bytes*/)
 {
-	if (m_pFile == INVALID_HANDLE_VALUE || m_pszOutputBuf == NULL)
+	if (m_pFile == INVALID_HANDLE_VALUE)
 	{
 		return FALSE;
 	}
 
-	RtlZeroMemory(m_pszOutputBuf,m_dwMaxOutputBufLen * sizeof(TCHAR));
-	va_list args; 
-	va_start(args, fmt);				
-	_vstprintf_s(m_pszOutputBuf, m_dwMaxOutputBufLen,fmt, args);
-
-	tstring strWrite;
-	TCHAR tszLogTime[21] = {0};
-	GetLogTime(tszLogTime,_countof(tszLogTime));
-	
-	strWrite.assign(tszLogTime);
-	strWrite.append(_T("  "));
-	strWrite.append(m_pszOutputBuf);
-	strWrite.append(_T("\r\n"));
-
-	//lock for multithread
-	CLock lock;
-
 	DWORD dwRet;
-	return WriteFile(m_pFile,strWrite.c_str(),strWrite.length()*sizeof(TCHAR),&dwRet,NULL);
+	return WriteFile(m_pFile,ptszOutputBuf,dwOutputBufLen,&dwRet,NULL);
 }

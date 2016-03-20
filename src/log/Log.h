@@ -22,13 +22,13 @@ class CLog
 {
 public:
 
-	virtual BOOL GetLogTime(__out TCHAR* ptszLogTimeBuf, __in DWORD dwBufLen /*in tchar*/);
+	static  BOOL GetLogTime(__out TCHAR* ptszLogTimeBuf, __in DWORD dwBufLen /*in tchar*/);
 
 	virtual BOOL InitLog() = 0;
 
-	virtual BOOL WriteLog(__in const TCHAR* fmt,...) = 0;
+	virtual BOOL WriteLog(__in const void* ptszOutputBuf ,__in DWORD dwOutputBufLen /*in bytes*/) = 0;
 
-	virtual void ConvertBufToHexMatrix(__in const void* pszSrcBuf, 
+	static  void ConvertBufToHexMatrix(__in const void* pszSrcBuf, 
 										__in DWORD dwSrcBufLen/*in bytes*/,
 										__out std::string& strHexMatrix);
 
