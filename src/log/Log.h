@@ -24,8 +24,7 @@ public:
 
 	virtual BOOL GetLogTime(__out TCHAR* ptszLogTimeBuf, __in DWORD dwBufLen /*in tchar*/);
 
-	virtual BOOL InitLog(__in const TCHAR* strLogFileName = _T("ZggLog.log")/*默认名称*/,
-							__in DWORD dwMaxOutputBufLen = 1024*1024 /*默认最大1M的缓冲区*/) = 0;
+	virtual BOOL InitLog() = 0;
 
 	virtual BOOL WriteLog(__in const TCHAR* fmt,...) = 0;
 
@@ -42,7 +41,20 @@ public:
 
 		CLock(){lock();}
 		~CLock(){unlock();}
-		void lock(){WaitForSingleObject(m_hEvent,INFINITE);}
+		void lock()
+		{
+			if (m_hEvent == NULL)
+			{
+				do 
+				{	//创建一个新的同步事件
+					TCHAR tszEventName[50]= {0};
+					static DWORD dwIndex = 1;
+					_stprintf_s(tszEventName,_countof(tszEventName),_T("%s%d"),ZGGLOG_LOCK_EVENT_NAME,dwIndex++);
+					m_hEvent = CreateEvent(NULL,TRUE,TRUE,tszEventName);
+				} while (GetLastError() == ERROR_ALREADY_EXISTS || m_hEvent == NULL);
+			}
+			WaitForSingleObject(m_hEvent,INFINITE);
+		}
 		void unlock(){SetEvent(m_hEvent);}
 	private:
 		static HANDLE m_hEvent;

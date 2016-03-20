@@ -6,7 +6,7 @@
 
 TEST(GetLogTime,ZGGLog)
 {
-	ZGG::CLog * pobjLog = new ZGG::CLogToFile;
+	ZGG::CLog * pobjLog = new ZGG::CLogToFile(_T("test.log"));
 	TCHAR tszLogTime[44] = {0};
 	EXPECT_TRUE(pobjLog->GetLogTime(tszLogTime,_countof(tszLogTime)));
 	_tprintf(_T("%s\n"),tszLogTime);
@@ -16,7 +16,7 @@ TEST(GetLogTime,ZGGLog)
 	pobjLog->ConvertBufToHexMatrix(szText,_countof(szText),strHexMatrix);
 	printf("%s\n",strHexMatrix.c_str());
 
-	EXPECT_TRUE(pobjLog->InitLog(_T("test.log")));
+	EXPECT_TRUE(pobjLog->InitLog());
 	EXPECT_TRUE(pobjLog->WriteLog(_T("write by ÷Ï∏Á∏Á")));
 
 }

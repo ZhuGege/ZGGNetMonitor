@@ -13,7 +13,7 @@ Description:abstract log
 #include "Log.h"
 #include <time.h>
 
-HANDLE ZGG::CLog::CLock::m_hEvent = CreateEvent(NULL,TRUE,TRUE,ZGGLOG_LOCK_EVENT_NAME);
+HANDLE ZGG::CLog::CLock::m_hEvent = NULL;
 
 //***************************************************************
 // Method:      GetLogTime

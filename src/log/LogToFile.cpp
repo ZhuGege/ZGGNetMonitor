@@ -15,21 +15,19 @@ Description:Log To File Implement
 #include <tchar.h>
 
 
+
 //***************************************************************
 // Method:      InitLog
-// FullName:    CLogToFile::InitLog
+// FullName:    ZGG::CLogToFile::InitLog
 // Access:      public 
 // Returns:     BOOL
 // Qualifier:  
-// Parameter:   const TCHAR * strLogFileName
-// Parameter:   DWORD dwMaxOutputBufLen
-// Description: 初始化日志
+// Description: 创建日志
 //***************************************************************
-BOOL ZGG::CLogToFile::InitLog(__in const TCHAR* strLogFileName /*= _T("ZggLog.log")默认名称*/, 
-							  __in DWORD dwMaxOutputBufLen /*= 1024*1024 默认最大1M的缓冲区*/)
+BOOL ZGG::CLogToFile::InitLog()
 {
 	
-	m_pFile = CreateFile(strLogFileName,
+	m_pFile = CreateFile(m_tszLogFileName,
 							FILE_WRITE_DATA|FILE_READ_DATA,
 							FILE_SHARE_READ|FILE_SHARE_WRITE|FILE_SHARE_DELETE,
 							NULL,OPEN_ALWAYS,
@@ -40,9 +38,7 @@ BOOL ZGG::CLogToFile::InitLog(__in const TCHAR* strLogFileName /*= _T("ZggLog.lo
 	{
 		//移动文件尾部，附加
 		SetFilePointer(m_pFile, 0, NULL, FILE_END); 
-		//设置最大缓冲区
-		m_dwMaxOutputBufLen = dwMaxOutputBufLen;
-		//申请空间
+		//申请缓冲空间
 		m_pszOutputBuf = new(std::nothrow) TCHAR[m_dwMaxOutputBufLen];
 	}
 
